@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chai & Co | Slow-brewed chai in Bishop Arts, Dallas</title>
+  <meta name="description" content="A late-night Pakistani chai house in Dallas's Bishop Arts District. Slow-brewed karak, masala, Kashmiri pink and saffron chai, open until 1am.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Chai & Co home">Chai <span class="amp">&amp;</span> Co</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#build" class="hide-sm">Build your chai</a>
+      <a href="#menu" class="hide-sm">Menu</a>
+      <a href="#visit" class="hide-sm">Visit</a>
+      <a href="story.html" class="nav-story">Our story</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO: AI-generated video, autoplays muted on a loop -->
+    <section class="hero" aria-label="Welcome">
+      <video class="hero-video" id="heroVideo" src="assets/hero.mp4" poster="assets/hero-poster.jpg"
+             autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <div class="hero-scrim"></div>
+      <div class="hero-content">
+        <h1>Slow-brewed chai,<br>poured until 1am.</h1>
+        <p class="hero-sub">A Pakistani chai house in Bishop Arts for the hours after dinner and before bed. Cardamom cracked by hand, black tea simmered low, milk pulled from height.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="story.html">Read our story</a>
+          <a class="btn btn-ghost" href="#build">Build your chai</a>
+        </div>
+      </div>
+      <button class="video-toggle" id="videoToggle" type="button" aria-label="Pause background video">Pause</button>
+    </section>
+
+    <section class="intro">
+      <p class="intro-line">Dallas has plenty of places to stay out late. We wanted one where the strongest thing on the menu is the tea.</p>
+    </section>
+
+    <!-- X-FACTOR: Build Your Chai -->
+    <section class="build" id="build" aria-labelledby="buildTitle">
+      <div class="build-inner">
+        <div class="build-controls">
+          <h2 id="buildTitle">Build your chai</h2>
+          <p class="section-lede">Pick a base, a milk and how much heat you want. Your cup changes as you go, and we name the drink at the end.</p>
+
+          <fieldset class="control">
+            <legend>Base</legend>
+            <div class="chips" id="baseChips">
+              <button type="button" class="chip is-on" data-base="karak">Karak</button>
+              <button type="button" class="chip" data-base="masala">Masala</button>
+              <button type="button" class="chip" data-base="kashmiri">Kashmiri pink</button>
+              <button type="button" class="chip" data-base="saffron">Saffron</button>
+            </div>
+            <p class="control-note" id="baseNote">Strong black tea, cardamom and a long simmer. The house classic.</p>
+          </fieldset>
+
+          <fieldset class="control">
+            <legend>Milk</legend>
+            <div class="chips" id="milkChips">
+              <button type="button" class="chip is-on" data-milk="whole">Whole</button>
+              <button type="button" class="chip" data-milk="oat">Oat</button>
+              <button type="button" class="chip" data-milk="almond">Almond</button>
+            </div>
+          </fieldset>
+
+          <div class="control">
+            <label for="spice" class="control-label">Spice level <span id="spiceValue">3 of 5</span></label>
+            <input type="range" id="spice" min="1" max="5" value="3" step="1">
+            <div class="range-ends"><span>Gentle</span><span>Fiery</span></div>
+          </div>
+
+          <fieldset class="control">
+            <legend>Sweetness</legend>
+            <div class="chips" id="sweetChips">
+              <button type="button" class="chip" data-sweet="none">None</button>
+              <button type="button" class="chip" data-sweet="light">Light</button>
+              <button type="button" class="chip is-on" data-sweet="classic">Classic</button>
+              <button type="button" class="chip" data-sweet="extra">Extra</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="control">
+            <legend>Extras</legend>
+            <div class="toggles">
+              <label class="toggle"><input type="checkbox" id="iced"> <span>Make it iced</span></label>
+              <label class="toggle"><input type="checkbox" id="shot"> <span>Add an espresso shot (+$1.00)</span></label>
+              <label class="toggle"><input type="checkbox" id="foam"> <span>Rose cold foam (+$0.75)</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="build-result" aria-live="polite">
+          <div class="arch">
+            <svg class="cup" id="cupSvg" viewBox="0 0 300 320" role="img" aria-labelledby="cupTitle">
+              <title id="cupTitle">Your chai, drawn live</title>
+              <ellipse class="cup-shadow" cx="150" cy="306" rx="96" ry="9"/>
+              <g class="steam" id="steam">
+                <path class="wisp w1" d="M120 92 C108 72 132 60 120 38 C110 20 128 10 122 -4"/>
+                <path class="wisp w2" d="M150 88 C138 66 164 54 150 30 C140 12 160 2 152 -12"/>
+                <path class="wisp w3" d="M180 92 C170 72 192 60 180 38 C170 20 188 10 182 -4"/>
+                <path class="wisp w4" d="M105 98 C96 82 114 72 106 56"/>
+                <path class="wisp w5" d="M196 98 C188 82 206 72 198 56"/>
+              </g>
+              <!-- kulhad clay cup -->
+              <path class="cup-body" d="M62 112 L238 112 L214 292 Q212 304 200 304 L100 304 Q88 304 86 292 Z"/>
+              <clipPath id="cupClip"><path d="M70 120 L230 120 L208 288 Q206 296 198 296 L102 296 Q94 296 92 288 Z"/></clipPath>
+              <g clip-path="url(#cupClip)">
+                <rect class="liquid" id="liquid" x="60" y="126" width="180" height="180"/>
+                <rect class="foam" id="foam" x="60" y="122" width="180" height="16"/>
+                <g class="ice" id="ice">
+                  <rect x="96" y="132" width="34" height="30" rx="6" transform="rotate(-12 113 147)"/>
+                  <rect x="140" y="138" width="32" height="28" rx="6" transform="rotate(9 156 152)"/>
+                  <rect x="176" y="130" width="28" height="26" rx="6" transform="rotate(-6 190 143)"/>
+                </g>
+                <rect class="shot" id="shot-layer" x="60" y="240" width="180" height="70"/>
+              </g>
+              <ellipse class="cup-rim" cx="150" cy="114" rx="90" ry="10"/>
+              <path class="cup-shine" d="M84 124 L104 124 L118 290 L106 290 Z"/>
+            </svg>
+          </div>
+          <div class="result-card">
+            <p class="result-kicker">Your drink</p>
+            <p class="result-name" id="drinkName">The Deep Ellum Night Owl</p>
+            <p class="result-desc" id="drinkDesc">Karak with whole milk, medium spice, classic sweetness.</p>
+            <p class="result-price" id="drinkPrice">$5.00</p>
+            <div class="result-actions">
+              <button type="button" class="btn btn-primary" id="saveOrder">Save this order</button>
+              <button type="button" class="btn btn-ghost-dark" id="askAbout">Ask the concierge</button>
+            </div>
+            <p class="saved-msg" id="savedMsg" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="menuTitle">
+      <div class="menu-inner">
+        <h2 id="menuTitle">The menu</h2>
+        <p class="section-lede light">Every chai can be made with oat or almond milk for $0.75. Snacks and sweets are baked fresh each morning, and the samosas and bun kebabs come from a family kitchen in Richardson.</p>
+        <div class="menu-cols">
+          <div class="menu-group">
+            <h3>Hot chai</h3>
+            <ul class="menu-list">
+            <li>
+              <div class="menu-row"><span class="item">Karak</span><span class="leader" aria-hidden="true"></span><span class="price">$5.50</span></div>
+              <p>Strong, milky and a little smoky. Simmered until it coats the spoon.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Masala chai</span><span class="leader" aria-hidden="true"></span><span class="price">$5.50</span></div>
+              <p>Black tea with ginger, cinnamon, clove and black pepper. Warm and peppery.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Doodh patti</span><span class="leader" aria-hidden="true"></span><span class="price">$5.75</span></div>
+              <p>Brewed straight in milk with almost no water, so it comes out extra rich.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Dirty chai</span><span class="leader" aria-hidden="true"></span><span class="price">$6.25</span></div>
+              <p>Masala chai with a shot of espresso for the long study nights.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Saffron zafran</span><span class="leader" aria-hidden="true"></span><span class="price">$6.75</span></div>
+              <p>Saffron threads, cardamom and honey. Golden, soft and fragrant.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Kashmiri pink with pistachio</span><span class="leader" aria-hidden="true"></span><span class="price">$7.00</span></div>
+              <p>Green tea brewed with a pinch of salt until it blushes, topped with crushed pistachio.</p>
+            </li>
+            </ul>
+            <h3 class="menu-sub">Cold</h3>
+            <ul class="menu-list">
+            <li>
+              <div class="menu-row"><span class="item">Iced karak</span><span class="leader" aria-hidden="true"></span><span class="price">$6.00</span></div>
+              <p>Our karak poured over ice with a splash of cold milk.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Rose iced chai</span><span class="leader" aria-hidden="true"></span><span class="price">$6.50</span></div>
+              <p>Masala chai over ice with rose cold foam on top.</p>
+            </li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <h3>From the bakery</h3>
+            <ul class="menu-list">
+            <li>
+              <div class="menu-row"><span class="item">Cake rusk</span><span class="leader" aria-hidden="true"></span><span class="price">$3.00</span></div>
+              <p>Three crisp, twice-baked slices made for dunking in your chai.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Naan khatai</span><span class="leader" aria-hidden="true"></span><span class="price">$2.50</span></div>
+              <p>Two crumbly cardamom shortbread cookies with a sliver of pistachio.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Zeera biscuits</span><span class="leader" aria-hidden="true"></span><span class="price">$2.50</span></div>
+              <p>Buttery cumin biscuits, a little salty and very easy to keep eating.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Pistachio tea cake</span><span class="leader" aria-hidden="true"></span><span class="price">$4.25</span></div>
+              <p>A soft slice of sponge cake with pistachio and a hint of cardamom.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Chicken patty</span><span class="leader" aria-hidden="true"></span><span class="price">$4.50</span></div>
+              <p>Flaky puff pastry filled with spiced chicken, served warm.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Aloo samosas</span><span class="leader" aria-hidden="true"></span><span class="price">$3.50</span></div>
+              <p>Two samosas with spiced potato and peas, with mint chutney.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Bun kebab</span><span class="leader" aria-hidden="true"></span><span class="price">$7.50</span></div>
+              <p>A Karachi street classic with a spiced lentil and beef patty, egg and chutney in a soft bun.</p>
+            </li>
+            <li>
+              <div class="menu-row"><span class="item">Gulab jamun</span><span class="leader" aria-hidden="true"></span><span class="price">$4.00</span></div>
+              <p>Two warm milk dumplings soaked in cardamom syrup.</p>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visitTitle">
+      <div class="visit-inner">
+        <div>
+          <h2 id="visitTitle">Come by</h2>
+          <p class="visit-where">On West Davis Street in the Bishop Arts District, Dallas. Street parking and a lot behind the building after 6pm.</p>
+          <a class="btn btn-ghost-dark" href="story.html">How we brew it</a>
+        </div>
+        <table class="hours">
+          <caption>Hours</caption>
+          <tbody>
+            <tr><th scope="row">Monday to Thursday</th><td>7am to midnight</td></tr>
+            <tr><th scope="row">Friday and Saturday</th><td>7am to 1am</td></tr>
+            <tr><th scope="row">Sunday</th><td>9am to midnight</td></tr>
+          </tbody>
+        </table>
+        <p class="visit-note">Study Sundays run from 6pm to close. Bring your laptop, the second cup is half off with a student ID.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="feature-note">
+      <h2>About the extra feature</h2>
+      <p>Build Your Chai lets you design your own drink by choosing a base, milk, spice and sweetness. The cup changes color, steam and toppings as you build it, then names your drink and prices it so you can save the order.</p>
+    </div>
+    <div class="footer-meta">
+      <a class="wordmark small" href="index.html">Chai <span class="amp">&amp;</span> Co</a>
+      <nav aria-label="Footer">
+        <a href="#build">Build your chai</a>
+        <a href="#menu">Menu</a>
+        <a href="story.html">Our story</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- CHATBOT: the built-in concierge loads from js/main.js.
+       To use a Chatling bot instead, set data-chatbot="external" on <body> and paste the Chatling embed script here. -->
+  <script src="js/main.js"></script>
+</body>
+</html>
