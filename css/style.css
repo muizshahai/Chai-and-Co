@@ -637,6 +637,7 @@ input[type="range"] {
   .hero-video { object-position: 72% center; }
   .hero-content { padding-bottom: 6.5rem; }
   .chat-launcher { padding: 0.45rem; }
+  .chat-teaser { display: none !important; }
   .chat-launcher span:not(.dot) { position: absolute; left: -9999px; }
   .menu-row { flex-wrap: wrap; }
   .menu-row .leader { display: none; }
